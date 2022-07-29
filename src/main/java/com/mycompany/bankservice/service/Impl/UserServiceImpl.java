@@ -68,4 +68,28 @@ public class UserServiceImpl implements UserService
        userDTO.setAadharNo(null);
        return userDTO;
     }
+
+    @Override
+    public UserDTO addMoney(UserDTO userDTO)
+    {
+        UserEntity userEntity=new UserEntity();
+        Optional<UserEntity>  optionalUserEntity=userRepository.findByAccountNo(userDTO.getAccountNo());
+        if(optionalUserEntity.isPresent())
+        {
+            userEntity=optionalUserEntity.get();
+            userEntity.setBalance(userEntity.getBalance()+userDTO.getMoney());
+            userEntity=userRepository.save(userEntity);
+            BeanUtils.copyProperties(userEntity,userDTO);
+        }
+        else {
+            List<ErrorDTO> errorDTOS=new ArrayList<>();
+            ErrorDTO errorDTO=new ErrorDTO();
+            errorDTO.setErrorCode("ACCOUNT_NOT_PRESENT");
+            errorDTO.setMessage("ENTER_CORRECT_ACCOUNT_NO");
+            errorDTOS.add(errorDTO);
+            throw new BusinessException(errorDTOS);
+        }
+        return userDTO;
+    }
+
 }

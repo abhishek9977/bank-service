@@ -20,4 +20,5 @@ public class UserDTO
     private String emailId;
     private String password;
     private Double balance;
+    private Double money;
 }

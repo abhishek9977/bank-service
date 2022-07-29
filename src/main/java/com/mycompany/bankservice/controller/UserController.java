@@ -32,4 +32,13 @@ public class UserController
         ResponseEntity<UserDTO> responseEntity=new ResponseEntity<>(userDTO, HttpStatus.OK);
         return responseEntity;
     }
+
+    @PostMapping("/add")
+    public  ResponseEntity<UserDTO> addMoney(@RequestBody UserDTO userDTO)
+    {
+         userDTO=userService.addMoney(userDTO);
+         ResponseEntity<UserDTO> responseEntity=new ResponseEntity<>(userDTO,HttpStatus.OK);
+         return responseEntity;
+    }
+
 }
