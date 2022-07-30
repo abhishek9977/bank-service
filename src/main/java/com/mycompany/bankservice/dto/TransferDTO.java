@@ -5,19 +5,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Time;
+
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDTO
+public class TransferDTO
 {
-
-    private Long accountNo;
-    private String userName;
-    private String mobileNo;
-    private String aadharNo;
-    private String emailId;
-    private String password;
-    private Double balance;
-    private Double money;
+     private Long transferId;
+     private String accNo;
+     private Double amount;
+     private Long accountNo;
+     private String dateAndTime;
 }

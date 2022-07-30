@@ -1,5 +1,6 @@
 package com.mycompany.bankservice.dto;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
@@ -9,15 +10,12 @@ import lombok.Setter;
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDTO
+public class BeneficiaryDTO
 {
 
-    private Long accountNo;
+
+    private String beneficiary;
     private String userName;
-    private String mobileNo;
-    private String aadharNo;
-    private String emailId;
-    private String password;
-    private Double balance;
-    private Double money;
+    private Long accountNo;
+
 }
